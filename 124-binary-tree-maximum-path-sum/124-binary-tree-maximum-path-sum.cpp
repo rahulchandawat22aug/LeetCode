@@ -22,68 +22,17 @@ public:
         int rightSum=getMaxPathSum(root->right);
         int currentValue=root->val;
 
-        if(currentValue>=0){
-            if(leftSum<0){
-                if(rightSum<0){
-                    if(ans<currentValue){
-                        ans=currentValue;
-                    }
-                    return currentValue;
-                }
-                else{
-                    if(ans<(currentValue+rightSum)){
-                        ans=currentValue+rightSum;
-                    }
-                    return(currentValue+rightSum);
-                }
-            }
-            else{
-                if(rightSum<0){
-                    if(ans<(currentValue+leftSum)){
-                        ans=currentValue+leftSum;
-                    }
-                    return currentValue+leftSum;
-                }
-                else{
-                    if(ans<(currentValue+rightSum+leftSum)){
-                        ans=currentValue+rightSum+leftSum;
-                    }
-                    return (currentValue+leftSum)>(currentValue+rightSum)?(currentValue+leftSum):(currentValue+rightSum);
-                }
-            }
-        }
-
         if(leftSum<0){
-                if(rightSum<0){
-                    if(ans<currentValue){
-                        ans=currentValue;
-                    }
-                    return currentValue;
-                }
-                else{
-                    if(ans<(rightSum+currentValue)){
-                        ans=rightSum+currentValue;
-                    }
-                    return(currentValue+rightSum);
-                }
-        }   
-        else{
-            if(rightSum<0){
-                if(ans<(currentValue+leftSum)){
-                    ans=currentValue+leftSum;
-                }
-                return currentValue+leftSum;
-            }
-            else{
-                
-                int x=max((currentValue+leftSum+rightSum),max((currentValue+leftSum), (currentValue+rightSum)));
-                ans=max(ans, x);
-
-
-                int temp=(currentValue+leftSum)>(currentValue+rightSum)?(currentValue+leftSum):(currentValue+rightSum);
-                return temp;
-            }
+            leftSum=0;
         }
+        if(rightSum<0){
+            rightSum=0;
+        }
+
+        ans=max(ans, currentValue+leftSum+rightSum);
+
+        return currentValue+max(leftSum, rightSum);
+
     }
 
     int maxPathSum(TreeNode* root) {
