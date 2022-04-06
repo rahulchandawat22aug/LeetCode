@@ -27,24 +27,17 @@ public:
         if(nums[0]==0)
             return false;
 
-        int requiredJump=1;
-        int i=n-2;
+        int requiredJump=1, i=n-2;
         while(i>=0){
-            if(nums[i]>=requiredJump){
+            if(nums[i]>=requiredJump)
                 requiredJump=1;
-                i--;
-            }
-            else{
+            else
                 requiredJump++;
-                i--;
-            }
+            i--;        
         }
         if(nums[0]>=requiredJump){
             return true;
         }
         return false;
-        // return makeJump(nums, 0, n);
-
-
     }
 };
