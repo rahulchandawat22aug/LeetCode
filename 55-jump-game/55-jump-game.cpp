@@ -15,7 +15,7 @@ public:
                 requiredJump=0;
             i--;        
         }
-        if(nums[0]>=requiredJump){
+        if(requiredJump==0){
             return true;
         }
         return false;
