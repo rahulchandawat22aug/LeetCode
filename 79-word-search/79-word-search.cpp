@@ -12,7 +12,7 @@ public:
         // if(sindex == len_word-1 && word[sindex]==board[crow][ccol])
         //     return true;
         
-        if(sindex == len_word)
+        if(sindex >= len_word)
             return true;
         
         if(crow >= nrow || ccol >= ncol || crow < 0 || ccol < 0 || sindex < 0 || vi[crow][ccol] == 1 || (board[crow][ccol] != word[sindex]))
